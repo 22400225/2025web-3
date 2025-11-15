@@ -32,7 +32,7 @@
 
 <%
     String idParam = request.getParameter("id");
-    int id = 12; // 기본값
+    int id = 1;
     if (idParam != null && !idParam.isEmpty()) {
         id = Integer.parseInt(idParam);
     }
