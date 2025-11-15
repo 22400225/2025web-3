@@ -10,7 +10,7 @@ private String writer;
 private int hit;
 private String createdDate;
 
-// 생성자
+
 public Post(int id, String title, String writer, int hit, String createdDate) {
 this.id = id;
 this.title = title;
@@ -19,7 +19,6 @@ this.hit = hit;
 this.createdDate = createdDate;
 }
 
-// Getter 메소드들
 public int getId() { return id; }
 public String getTitle() { return title; }
 public String getWriter() { return writer; }
@@ -29,8 +28,7 @@ public String getCreatedDate() { return createdDate; }
 %>
 
 <%
-    // 2. Mock 데이터 생성 (DB에서 SELECT * FROM board; 를 대신함)
-    // 실제로는 이 부분에서 DB에 접속해서 데이터를 가져와야 합니다.
+
     List<Post> postList = new ArrayList<>();
     postList.add(new Post(12, "Lorem Ipsum is simply dummy text of the printing...", "Sally", 30, "2024-10-31"));
     postList.add(new Post(11, "JSP Mock Data 테스트입니다.", "Admin", 15, "2024-10-30"));
@@ -64,70 +62,71 @@ public String getCreatedDate() { return createdDate; }
 <div class="container">
     <h2>자유게시판</h2>
 
-    <div class="toolbar">
-        <div class="search-bar">
-            <select name="searchBy">
-                <option value="title">Search by</option>
-                <option value="writer">작성자</option>
-                <option value="content">내용</option>
-            </select>
-            <input type="text" name="query" size="30">
-            <button type="submit" class="btn">Search</button>
-        </div>
-        <a href="write.html" class="btn">Add</a>
+    <div class.toolbar">
+    <div class="search-bar">
+        <select name="searchBy">
+            <option value="title">Search by</option>
+            <option value="writer">작성자</option>
+            <option value="content">내용</option>
+        </select>
+        <input type="text" name="query" size="30">
+        <button type="submit" class="btn">Search</button>
     </div>
+    <a href="write.html" class="btn">Add</a>
+</div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>title</th>
-            <th>writer</th>
-            <th>hit</th>
-            <th>created_date</th>
-            <th>Menu</th>
-        </tr>
-        </thead>
-        <tbody>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>title</th>
+        <th>writer</th>
+        <th>hit</th>
+        <th>created_date</th>
+        <th>Menu</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% for (Post post : postList) { %>
+    <tr>
+        <td><%= post.getId() %></td>
 
 
-        <% for (Post post : postList) { %>
-        <tr>
-            <td><%= post.getId() %></td>
+        <td>
+            <a href="view.jsp?id=<%= post.getId() %>">
+                <%= post.getTitle() %>
+            </a>
+        </td>
 
-            <td>
-                <a href="view.jsp?id=<%= post.getId() %>">
-                    <%= post.getTitle() %>
-                </a>
-            </td>
+        <td><%= post.getWriter() %></td>
+        <td><%= post.getHit() %></td>
+        <td><%= post.getCreatedDate() %></td>
 
-            <td><%= post.getWriter() %></td>
-            <td><%= post.getHit() %></td>
-            <td><%= post.getCreatedDate() %></td>
 
-            <td class="menu-icons">
+        <td class="menu-icons">
 
-                <a href="edit.html?id=<%= post.getId() %>" title="Edit">✏️</a>
+            <a href="edit.jsp?id=<%= post.getId() %>" title="Edit">✏️</a>
 
-                <a href="delete_ok.jsp?id=<%= post.getId() %>"
-                   onclick="return confirm('정말 삭제하시겠습니까? (id=<%= post.getId() %>)');"
-                   title="Delete">🗑️</a>
-            </td>
-        </tr>
-        <% } // end of for loop %>
+            <a href="delete_ok.jsp?id=<%= post.getId() %>"
+               onclick="return confirm('정말 삭제하시겠습니까? (id=<%= post.getId() %>)');"
+               title="Delete">🗑️</a>
+        </td>
+    </tr>
+    <% } // end of for loop %>
 
-        <% if (postList.isEmpty()) { %>
-        <tr>
-            <td colspan="6" style="text-align: center; padding: 20px;">게시물이 없습니다.</td>
-        </tr>
-        <% } %>
+    <% if (postList.isEmpty()) { %>
+    <tr>
+        <td colspan="6" style="text-align: center; padding: 20px;">게시물이 없습니다.</td>
+    </tr>
+    <% } %>
 
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <div class="pagination">
-        <span>&lt; 1 2 &gt;</span>
-    </div>
+<div class.pagination">
+<span>&lt; 1 2 &gt;</span>
+</div>
 </div>
 </body>
 </html>
