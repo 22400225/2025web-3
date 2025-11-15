@@ -125,7 +125,6 @@ public String getCreatedDate() { return createdDate; }
 </table>
 
 <div class.pagination">
-<span>&lt; 1 2 &gt;</span>
 </div>
 </div>
 </body>
