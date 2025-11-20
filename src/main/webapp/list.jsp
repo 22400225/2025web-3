@@ -8,15 +8,15 @@
         private int id;
         private String title;
         private String writer;
-        private int hit;
+        private int view;
         private String createdDate;
 
         // 생성자
-        public Post(int id, String title, String writer, int hit, String createdDate) {
+        public Post(int id, String title, String writer, int view, String createdDate) {
             this.id = id;
             this.title = title;
             this.writer = writer;
-            this.hit = hit;
+            this.view = view;
             this.createdDate = createdDate;
         }
 
@@ -24,7 +24,7 @@
         public int getId() { return id; }
         public String getTitle() { return title; }
         public String getWriter() { return writer; }
-        public int getHit() { return hit; }
+        public int getView() { return view; }
         public String getCreatedDate() { return createdDate; }
     }
 %>
@@ -32,11 +32,11 @@
 <%
 
     List<Post> postList = new ArrayList<>();
-    postList.add(new Post(12, "Lorem Ipsum is simply dummy text of the printing...", "Sally", 30, "2024-10-31"));
-    postList.add(new Post(11, "JSP Mock Data 테스트입니다.", "Admin", 15, "2024-10-30"));
-    postList.add(new Post(10, "Railway 배포 성공! (과제 테스트)", "Gildong", 45, "2024-10-29"));
-    postList.add(new Post(9, "게시판 기능 구현 중입니다.", "Sally", 22, "2024-10-28"));
-    postList.add(new Post(8, "첫 번째 게시글입니다. 반갑습니다.", "Tester", 5, "2024-10-27"));
+    postList.add(new Post(1, "안녕 나는 이대연", "Daeyeon", 30, "2024-10-31"));
+    postList.add(new Post(2, "김태우입니다.", "Taewoo", 41, "2024-10-30"));
+    postList.add(new Post(3, "Railway 배포 성공!", "Jiwon", 45, "2024-10-29"));
+    postList.add(new Post(4, "게시판 기능 구현 중입니다.", "Kim", 22, "2024-10-28"));
+    postList.add(new Post(5, "첫 번째 게시글입니다. 반갑습니다.", "Lee", 5, "2024-10-27"));
 %>
 
 <!DOCTYPE html>
@@ -108,7 +108,7 @@
             <th>#</th>
             <th>title</th>
             <th>writer</th>
-            <th>hit</th>
+            <th>view</th>
             <th>created_date</th>
             <th>Menu</th>
         </tr>
@@ -126,7 +126,7 @@
             </td>
 
             <td><%= post.getWriter() %></td>
-            <td><%= post.getHit() %></td>
+            <td><%= post.getView() %></td>
             <td><%= post.getCreatedDate() %></td>
 
 

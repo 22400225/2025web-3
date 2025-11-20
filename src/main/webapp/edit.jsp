@@ -5,18 +5,18 @@
         private int id;
         private String title;
         private String writer;
-        private int hit;
+        private int view;
         private String createdDate;
-        private String content; // 내용
-        private String category; // 카테고리
+        private String content;
+        private String category;
 
-        public Post(int id, String title, String writer, String category, String content, int hit, String createdDate) {
+        public Post(int id, String title, String writer, String category, String content, int view, String createdDate) {
             this.id = id;
             this.title = title;
             this.writer = writer;
             this.category = category;
             this.content = content;
-            this.hit = hit;
+            this.view = view;
             this.createdDate = createdDate;
         }
 
@@ -26,22 +26,18 @@
         public String getWriter() { return writer; }
         public String getCategory() { return category; }
         public String getContent() { return content; }
-        public int getHit() { return hit; }
+        public int getView() { return view; }
         public String getCreatedDate() { return createdDate; }
     }
 %>
 
 <%
-    // 1. (핵심) list.jsp에서 넘겨준 id 값을 받습니다. (예: edit.jsp?id=12)
     String idParam = request.getParameter("id");
     int id = 12; // 기본값 (혹시 id가 안 넘어올 경우 대비)
     if (idParam != null && !idParam.isEmpty()) {
         id = Integer.parseInt(idParam);
     }
 
-    // 2. Mock Data 생성 (DB에서 "SELECT * FROM board WHERE id = ?"를 대신함)
-    // 실제로는 id를 사용해 DB에서 데이터를 1건 조회해야 합니다.
-    // 여기서는 id 값을 기반으로 가짜 데이터를 만듭니다.
     Post post = new Post(
             id,
             "ID " + id + "번 글의 기존 제목입니다.", // Mock 제목

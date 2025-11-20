@@ -4,18 +4,18 @@
         private int id;
         private String title;
         private String writer;
-        private int hit;
+        private int view;
         private String createdDate;
         private String content;
         private String category;
 
-        public Post(int id, String title, String writer, String category, String content, int hit, String createdDate) {
+        public Post(int id, String title, String writer, String category, String content, int view, String createdDate) {
             this.id = id;
             this.title = title;
             this.writer = writer;
             this.category = category;
             this.content = content;
-            this.hit = hit;
+            this.view = view;
             this.createdDate = createdDate;
         }
 
@@ -25,7 +25,7 @@
         public String getWriter() { return writer; }
         public String getCategory() { return category; }
         public String getContent() { return content; }
-        public int getHit() { return hit; }
+        public int getView() { return view; }
         public String getCreatedDate() { return createdDate; }
     }
 %>
@@ -74,7 +74,7 @@
         <div class="post-meta">
             <span>작성자: <%= post.getWriter() %></span> |
             <span>작성일: <%= post.getCreatedDate() %></span> |
-            <span>조회수: <%= post.getHit() %></span>
+            <span>조회수: <%= post.getView() %></span>
         </div>
     </div>
 
